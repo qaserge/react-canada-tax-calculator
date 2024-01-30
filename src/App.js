@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import DataInput from "./components/DataInput";
+import TaxTypeSelection from "./components/TaxTypeSelection";
+import ProvinceSelection from "./components/ProvinceSelection";
+import Output from "./components/Output";
+import { useState } from "react";
 
 function App() {
+  const [amount, setAmount] = useState(0);
+  const [taxType, setTaxType] = useState("sales");
+  const [province, setProvince] = useState("Quebec");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DataInput setAmount={setAmount} />
+      <TaxTypeSelection setTaxType={setTaxType} />
+      <ProvinceSelection setProvince={setProvince} />
+      <Output amount={amount} taxType={taxType} province={province} />
     </div>
   );
 }
